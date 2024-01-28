@@ -16,7 +16,7 @@ $userC = new userC();
     <!-- Basic -->
     <meta charset="UTF-8">
 
-    <title>User Profile | Okler Themes | Porto-Admin</title>
+    <title>User Profile | AfriKare</title>
     <meta name="keywords" content="HTML5 Admin Template" />
     <meta name="description" content="Porto Admin - Responsive HTML5 Template">
     <meta name="author" content="okler.net">
@@ -146,6 +146,13 @@ $userC = new userC();
                                         <span>Mes partages</span>
                                     </a>
                                 </li>
+                                <li>
+                                <a href="#">
+
+										<i class="fa fa-users" aria-hidden="true"></i>
+										<span>Mes Médecins</span>
+								</a>
+                                </li>
                             </ul>
                         </nav>
 
@@ -158,7 +165,7 @@ $userC = new userC();
 
             <section role="main" class="content-body">
                 <header class="page-header">
-                    <h2>User Profile</h2>
+                    <h2>Profile</h2>
 
                     <div class="right-wrapper pull-right">
                         <ol class="breadcrumbs">
@@ -168,7 +175,7 @@ $userC = new userC();
                                 </a>
                             </li>
                             <li><span>Pages</span></li>
-                            <li><span>User Profile</span></li>
+                            <li><span>Profile</span></li>
                         </ol>
 
                         <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -185,9 +192,10 @@ $userC = new userC();
                                 <div class="thumb-info mb-md">
                                     <img src="assets/images/!logged-user.jpg" class="rounded img-responsive" alt="John Doe">
                                     <div class="thumb-info-title">
-                                        <span class="thumb-info-inner">John Doe</span>
-                                        <span class="thumb-info-type">CEO</span>
+                                        <span class="thumb-info-inner">Christian</span>
+                                        <span class="thumb-info-type">NEBOT </span>
                                     </div>
+                                
                                 </div>
 
                                 <div class="widget-toggle-expand mb-md">

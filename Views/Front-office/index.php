@@ -155,16 +155,12 @@ $userC = new userC();
 									</a>
 								</li>
 								<li>
-									<a href="acceptation.php">
+								<a href="#">
 
 										<i class="fa fa-users" aria-hidden="true"></i>
-										<span>Mon Médecin</span>
-									</a>
+										<span>Mes Médecins</span>
+								</a>
 								</li>
-
-
-
-
 							</ul>
 						</nav>
 

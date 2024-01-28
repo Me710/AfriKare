@@ -58,8 +58,8 @@ async function main() {
   const customFee = [royaltyFee];
 
   const nftCreate = await new TokenCreateTransaction()
-    .setTokenName("Lightency NFT Collection")
-    .setTokenSymbol("Light")
+    .setTokenName("Medical File")
+    .setTokenSymbol("MedFile")
     .setTreasuryAccountId(myAccountId)
     .setTokenType(TokenType.NonFungibleUnique)
     .setCustomFees(customFee)
@@ -81,7 +81,7 @@ async function main() {
     .execute(client);
 
   //Update the NFT collection memo
-  const newMemo = "Lightency collection.";
+  const newMemo = "Med File";
   const nftUpdate = await new TokenUpdateTransaction()
     .setTokenId(nftCreateRx.tokenId)
     .setTokenMemo(newMemo)
@@ -166,7 +166,7 @@ async function main() {
   await nftUpdateFeeSubmit.getReceipt(client);
 
   //Mint NFT2
-  const metadata2String = "Lightency NFT 1";
+  const metadata2String = "MedFile NFT 1";
   const metadataUint8Array2 = encoder.encode(metadata2String);
 
   const nft2Mint = await new TokenMintTransaction()
