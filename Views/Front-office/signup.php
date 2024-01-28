@@ -127,7 +127,7 @@ if (isset($_SESSION["uid"])) {
 						</div>
 						<div class="field">
 							<span class="input-icon"><i class="fas fa-lock"></i></span>
-							<input type="password" name="password" id="password" placeholder="Mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirPassWord(event)">
+							<input type="password" name="password" class="form-control input-lg" id="password" placeholder="Mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirPassWord(event)">
 							<span class="form-label1 input-group-append">
 								<i id="eye" class="far fa-eye-slash" onclick="showHideLPwd();"></i>
 							</span>
@@ -136,7 +136,7 @@ if (isset($_SESSION["uid"])) {
 
 						<div class="field">
 							<span class="input-icon"><i class="fas fa-lock"></i></span>
-							<input type="password" name="repassword" id="repassword" placeholder="Confirmer le mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirRePassWord(event)">
+							<input type="password" name="repassword" class="form-control input-lg" id="repassword" placeholder="Confirmer le mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirRePassWord(event)">
 							<span class="form-label1 input-group-append">
 								<i id="eye1" class="far fa-eye-slash" onclick="showHideRPwd();"></i>
 							</span>

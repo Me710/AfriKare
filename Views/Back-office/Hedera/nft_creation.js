@@ -27,7 +27,7 @@ async function createNFT() {
     .setInitialSupply(0)
     .setTreasuryAccountId(myAccountId)
     .setSupplyType(TokenSupplyType.Finite)
-    .setMaxSupply(5)
+    .setMaxSupply(150)
     .setSupplyKey(myPrivateKey)
     .setFreezeKey(myPrivateKey)
     .setPauseKey(myPrivateKey)
@@ -64,21 +64,21 @@ const db = require("./config.js");
 
 async function fetchDataFromDatabase() {
   try {
-    const results = await db.executeQuery("SELECT * FROM users");
+    const results = await db.executeQuery(
+      "SELECT * FROM consultation ORDER BY id DESC LIMIT 1"
+    );
     console.log("Data from the database:", results);
     return results;
   } catch (error) {
     console.error("Error fetching data from the database:", error);
-    throw error; // Re-throw the error to handle it outside this function if needed
+    throw error;
   }
 }
 
 async function mintNFTWithDatabaseData(tokenId) {
   try {
-    // Fetch data from the database
-    const userData = await fetchDataFromDatabase();
+    const consultationData = await fetchDataFromDatabase();
 
-    // Mint new NFT with metadata including database data
     let mintTx = await new TokenMintTransaction()
       .setTokenId(tokenId)
       .setMetadata([
@@ -86,7 +86,7 @@ async function mintNFTWithDatabaseData(tokenId) {
         Buffer.from("secondToken"),
         Buffer.from("thirdToken"),
         Buffer.from("fourthToken"),
-        Buffer.from(JSON.stringify(userData)), // Include database data in metadata
+        Buffer.from(JSON.stringify(consultationData)),
       ])
       .execute(client);
 

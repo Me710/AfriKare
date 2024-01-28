@@ -37,4 +37,16 @@ class ConsultationC
             echo 'Erreur: ' . $e->getMessage();
         }
     }
+    function afficherDerniereConsultation()
+    {
+        $sql = "SELECT * FROM consultation ORDER BY id DESC LIMIT 1";
+        $db = config::getConnexion();
+        try {
+            $query = $db->query($sql);
+            $consultation = $query->fetch(PDO::FETCH_ASSOC);
+            return $consultation;
+        } catch (Exception $e) {
+            die('Erreur:' . $e->getMessage());
+        }
+    }
 }

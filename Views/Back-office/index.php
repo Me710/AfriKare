@@ -310,12 +310,7 @@ $userC = new userC();
 										<span>Dashboard</span>
 									</a>
 								</li>
-								<li>
-									<a href="index.php">
-										<i class="fa fa-home" aria-hidden="true"></i>
-										<span>Dashboard</span>
-									</a>
-								</li>
+
 								<li>
 									<a href="profile.php">
 										<i class="fa fa-user" aria-hidden="true"></i>

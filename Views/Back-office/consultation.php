@@ -317,14 +317,7 @@ $userC = new userC();
 
 
     </section>
-    <?php
-    $schedules = $userC->afficher();
-    $sched_result = [];
-    foreach ($schedules as $row) {
 
-        $sched_result[$row['id']] = $row;
-    }
-    ?>
 
     <script>
         function saveFormData() {
