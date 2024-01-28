@@ -14,10 +14,9 @@ AfriKare donne également aux chercheurs et à l'industrie pharmaceutique la pos
 
 ## Caractéristiques techniques
 
-- Blockchain privée basée sur Hyperledger Fabric
+- Blockchain privée basée sur HashGraph Hedera
 - Architecture décentralisée  
 - Interface web sécurisée
-- Stockage cloud hybride et redondant
 - Diagnostic par intelligence artificielle
 - Consentement éclairé des patients
 
