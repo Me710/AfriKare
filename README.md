@@ -35,6 +35,46 @@ Suivez ces étapes pour installer et exécuter AfriKare sur votre machine locale
 - Serveur MySQL
 - Navigateur web moderne
 
+### Aborescence du projet
+```
+AfriKare
+│   afrikare.sql
+│   CONTRIBUTING.md
+│   .env
+│   .env.example
+│   .gitignore
+│   ...
+│
+├── Controller
+│   ├── consultationC
+│   └── userC
+│
+├── Model
+│   ├── consultation
+│   └── user
+│
+├── View
+│   ├── Back-office
+│   │   ├── js
+│   │   ├── node_modules
+│   │   ├── Hedera
+│   │   ├── phpmailer
+│   │   ├── assets
+│   │   └── ...
+│   │
+│   └── Front-office
+│       ├── js
+│       ├── node_modules
+│       ├── Hedera
+│       ├── phpmailer
+│       ├── assets
+│       └── ...
+│
+├── config
+│
+└── ...
+```
+
 ### Étapes
 
 1. **Cloner le projet :**
