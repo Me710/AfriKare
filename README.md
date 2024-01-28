@@ -80,7 +80,7 @@ AfriKare
 1. **Cloner le projet :**
 
    ```bash
-   git clone https://github.com/votre-utilisateur/AfriKare.git
+   git clone https://github.com/Me710/AfriKare.git
    cd AfriKare
    ```
 
