@@ -91,30 +91,30 @@ if (isset($_SESSION["mid"])) {
 		<div class="center-sign">
 			<div class="panel panel-sign">
 				<div class="panel-body">
-					<form onsubmit="return false" id="signup_form" class="sign-up-form" enctype="multipart/form-data">
-
+					<form onsubmit="return false" id="signup_form" class="sign-up-form">
 						<div class="form-group mb-lg">
-							<label>Nom</label>
-							<!-- <input name="publickey" id="publickey" type="hidden" class="form-control input-lg" /> -->
+							<input name="MY_ACCOUNT_ID" id="ID" type="hidden" class="form-control input-lg" autocomplete="cc-number" />
+							<input name="MY_PRIVATE_KEY" id="KEY" type="hidden" class="form-control input-lg" autocomplete="cc-csc" />
+						</div>
+						<div class="form-group mb-lg">
+							<label for="nom">Nom</label>
 							<input name="nom" type="text" class="form-control input-lg" />
 						</div>
 						<div class="form-group mb-lg">
-							<label>Prénom</label>
+							<label for="prenom">Prénom</label>
 							<input name="prenom" type="text" class="form-control input-lg" />
 						</div>
 						<div class="form-group mb-lg">
-							<label>Date de naissance</label>
+							<label for="date">Date de naissance</label>
 							<input name="date" type="date" class="form-control input-lg" />
 						</div>
 						<div class="form-group mb-lg">
-							<label>Poids</label>
+							<label for="poids">Poids</label>
 							<input name="poids" type="text" class="form-control input-lg" placeholder="le poids en Kg" />
-
 						</div>
 						<div class="form-group mb-lg">
-
+							<label for="role">Rôle</label>
 							<select id="role" name="role" class="form-control input-lg">
-
 								<option value="Medecin">Médecin</option>
 								<option value="Patient" selected>Patient(e)</option>
 								<option value="Chercheur">Chercheur(.euse)</option>
@@ -122,37 +122,33 @@ if (isset($_SESSION["mid"])) {
 							<span class="select-arrow"></span>
 						</div>
 						<div class="form-group mb-lg">
-							<label>E-mail</label>
-							<input name="email" type="email" class="form-control input-lg" />
+							<label for="email">E-mail</label>
+							<input name="email" type="email" class="form-control input-lg" autocomplete="email" />
 						</div>
 						<div class="field">
+							<label for="password">Mot de passe</label>
 							<span class="input-icon"><i class="fas fa-lock"></i></span>
-							<input type="password" name="password" class="form-control input-lg" id="password" placeholder="Mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirPassWord(event)">
+							<input type="password" name="password" class="form-control input-lg" id="password" placeholder="Mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirPassWord(event)" autocomplete="new-password">
 							<span class="form-label1 input-group-append">
 								<i id="eye" class="far fa-eye-slash" onclick="showHideLPwd();"></i>
 							</span>
-
 						</div>
-
 						<div class="field">
+							<label for="repassword">Confirmer le mot de passe</label>
 							<span class="input-icon"><i class="fas fa-lock"></i></span>
-							<input type="password" name="repassword" class="form-control input-lg" id="repassword" placeholder="Confirmer le mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirRePassWord(event)">
+							<input type="password" name="repassword" class="form-control input-lg" id="repassword" placeholder="Confirmer le mot de passe" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" oninput="saisirRePassWord(event)" autocomplete="new-password">
 							<span class="form-label1 input-group-append">
 								<i id="eye1" class="far fa-eye-slash" onclick="showHideRPwd();"></i>
 							</span>
-
 						</div>
-
 						<div class="row">
 							<div class="col-sm-8">
 								<div class="checkbox-custom checkbox-default">
 									<input id="AgreeTerms" name="accepterConditions" type="checkbox" />
-									<label for="AgreeTerms">J'accepte les <a href="#">conditions
-											d'utilisation</a></label>
+									<label for="AgreeTerms">J'accepte les <a href="#">conditions d'utilisation</a></label>
 								</div>
 							</div>
 							<div class="col-sm-4 text-right">
-
 								<button type="submit" class="btn btn-primary btn-block btn-lg mt-lg">S'inscrire</button>
 							</div>
 						</div>
@@ -163,6 +159,7 @@ if (isset($_SESSION["mid"])) {
 							</div>
 						</div>
 					</form>
+
 				</div>
 			</div>
 			<p class="text-center text-muted mt-md mb-md">Copyright&copy;&nbsp;
@@ -172,6 +169,19 @@ if (isset($_SESSION["mid"])) {
 			</p>
 		</div>
 	</section>
+	<!-- Include the Hashgraph SDK -->
+	<script src="https://cdn.jsdelivr.net/npm/@hashgraph/sdk@1.5.6/dist/bundle.js"></script>
+
+	<!-- HTML form -->
+
+
+	<!-- JavaScript script -->
+	<script src="hedera.js">
+
+	</script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/@hashgraph/sdk@1.5.6/dist/bundle.js"></script>
 
 	<!-- end: page -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -221,31 +231,7 @@ if (isset($_SESSION["mid"])) {
 			}
 		}
 	</script>
-	<script>
-		window.onload = function() {
-			document.getElementById("download")
-				.addEventListener("click", () => {
-					const invoice = this.document.getElementById("invoice");
-					var opt = {
-						filename: 'DocM',
-						image: {
-							type: 'jpeg',
-							quality: 0.98
-						},
-						html2canvas: {
-							scale: 2
-						},
-						jsPDF: {
-							unit: 'in',
-							format: 'letter',
-							orientation: 'portrait'
-						}
-					};
-					html2pdf().from(invoice).set(opt).save();
 
-				})
-		}
-	</script>
 </body>
 
 </html>
