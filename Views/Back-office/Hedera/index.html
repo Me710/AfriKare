@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .panel-footer {
+            margin-top: 20px;
+        }
+
+        .pager {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pager li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .pager li a {
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #333;
+        }
+
+        .pager li a:hover {
+            background-color: #f4f4f4;
+        }
+
+        .finish button {
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form-horizontal" novalidate="novalidate">
+        <div class="tab-content">
+            <div id="w4-account" class="tab-pane active">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="auth">Clé d'authentification</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="auth" id="auth">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="name">Prénom du patient</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="name" id="name">
+                    </div>
+                </div>
+            </div>
+            <div id="w4-profile" class="tab-pane">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="symptome">
+                        Symptômes actuels</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="symptome" id="symptome">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="dure">Durée
+                    </label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" name="dure" id="dure" placeholder="en jour">
+                    </div>
+                </div>
+            </div>
+            <div id="w4-billing" class="tab-pane">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="pression">Pression artérielle</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="pression" id="pression">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="frequence">Fréquence Cardiaque</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="frequence" id="frequence">
+                    </div>
+                </div>
+
+            </div>
+            <div id="w4-confirm" class="tab-pane">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="diagnostic">Diagnostic </label>
+                    <div class="col-sm-9">
+                        <textarea name="diagnostic" id="diagnostic" cols="30" class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="traitement">Plan de traitement </label>
+                    <div class="col-sm-9">
+                        <textarea name="traitement" id="traitement" cols="30" class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <ul class="pager">
+                    <li class="previous disabled">
+                        <a><i class="fa fa-angle-left"></i> Previous</a>
+                    </li>
+                    <li class="finish hidden pull-right">
+                        <button type="button" onclick="saveFormData()"> <a>Envoyer</a></button>
+
+                    </li>
+                    <li class="next">
+                        <a>Next <i class="fa fa-angle-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    <script>
+        function saveFormData() {
+            var formData = {
+                auth: getElementValueById('auth'),
+                plast_name: getElementValueById('name'),
+                symptoms: getElementValueById('symptome'),
+                duration: getElementValueById('dure'),
+                bloodPressure: getElementValueById('pression'),
+                heartRate: getElementValueById('frequence'),
+                diagnostic: getElementValueById('diagnostic'),
+                treatmentPlan: getElementValueById('traitement')
+            };
+
+            // Log the form data to the console
+            console.log(formData);
+
+            // Convert the JavaScript object to a JSON string
+            var jsonData = JSON.stringify(formData, null, 2);
+
+
+            console.log(jsonData);
+
+        }
+
+        function getElementValueById(id) {
+            var element = document.getElementById(id);
+            return element ? element.value : null;
+        }
+    </script>
+</body>
+
+</html>

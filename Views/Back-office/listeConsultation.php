@@ -133,17 +133,29 @@ $userC = new userC();
 									</a>
 								</li>
 								<li>
-									<a href="profile.php">
-
-										<i class="fa fa-user" aria-hidden="true"></i>
-										<span>Modifier Mon profil</span>
+									<a href="index.php">
+										<i class="fa fa-home" aria-hidden="true"></i>
+										<span>Dashboard</span>
 									</a>
 								</li>
 								<li>
-									<a href="partage.php">
+									<a href="profile.php">
+										<i class="fa fa-user" aria-hidden="true"></i>
+										<span>Mon profil</span>
+									</a>
+								</li>
+								<li>
+									<a href="consultation.php">
+
+										<i class="fa fa-user" aria-hidden="true"></i>
+										<span>Faire une consultation</span>
+									</a>
+								</li>
+								<li>
+									<a href="listeConsultation.php">
 
 										<i class="fa fa-list" aria-hidden="true"></i>
-										<span>Mes partages</span>
+										<span>Mes consultations</span>
 									</a>
 								</li>
 							</ul>

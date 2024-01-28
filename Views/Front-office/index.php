@@ -64,7 +64,7 @@ $userC = new userC();
 		<header class="header">
 			<div class="logo-container">
 				<a href="../" class="logo">
-					<img src="assets/images/R.jpg" height="35" alt="AFRIKARE Admin" />
+					<img src="assets/images/lo.png" height="35" alt="AFRIKARE Admin" />
 				</a>
 				<div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
 					<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -152,6 +152,13 @@ $userC = new userC();
 
 										<i class="fa fa-list" aria-hidden="true"></i>
 										<span>Mes partages</span>
+									</a>
+								</li>
+								<li>
+									<a href="acceptation.php">
+
+										<i class="fa fa-users" aria-hidden="true"></i>
+										<span>Mon Médecin</span>
 									</a>
 								</li>
 

@@ -2,7 +2,17 @@
 class userC
 {
 
-
+	function afficher()
+	{
+		$sql = "SELECT * FROM users ORDER BY id DESC";
+		$db = config::getConnexion();
+		try {
+			$liste = $db->query($sql);
+			return $liste;
+		} catch (Exception $e) {
+			die('Erreur:' . $e->getMessage());
+		}
+	}
 
 
 	function addUser($user)

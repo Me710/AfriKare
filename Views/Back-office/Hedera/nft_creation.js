@@ -27,7 +27,7 @@ async function createNFT() {
     .setInitialSupply(0)
     .setTreasuryAccountId(myAccountId)
     .setSupplyType(TokenSupplyType.Finite)
-    .setMaxSupply(4)
+    .setMaxSupply(5)
     .setSupplyKey(myPrivateKey)
     .setFreezeKey(myPrivateKey)
     .setPauseKey(myPrivateKey)
@@ -60,31 +60,52 @@ async function queryAccountBalance(accountId) {
   console.log("-----------------------------------");
 }
 
-async function mintNFT(tokenId) {
-  console.log("MintNFT--------------------------");
+const db = require("./config.js");
 
-  // Mint new NFT
-  let mintTx = await new TokenMintTransaction()
-    .setTokenId(tokenId)
-    .setMetadata([
-      Buffer.from("ipfs://QmTzWcVfk88JRqjTpVwHzBeULRTNzHY7mnBSG42CpwHmPa"),
-      Buffer.from("secondToken"),
-      Buffer.from("thirdToken"),
-      Buffer.from("fourthToken"),
-    ])
-    .execute(client);
-  let mintRx = await mintTx.getReceipt(client);
-  //Log the serial number
-  console.log(`- Created NFT ${tokenId} with serial: ${mintRx.serials} \n`);
+async function fetchDataFromDatabase() {
+  try {
+    const results = await db.executeQuery("SELECT * FROM users");
+    console.log("Data from the database:", results);
+    return results;
+  } catch (error) {
+    console.error("Error fetching data from the database:", error);
+    throw error; // Re-throw the error to handle it outside this function if needed
+  }
+}
 
-  console.log("-----------------------------------");
+async function mintNFTWithDatabaseData(tokenId) {
+  try {
+    // Fetch data from the database
+    const userData = await fetchDataFromDatabase();
+
+    // Mint new NFT with metadata including database data
+    let mintTx = await new TokenMintTransaction()
+      .setTokenId(tokenId)
+      .setMetadata([
+        Buffer.from("ipfs://QmTzWcVfk88JRqjTpVwHzBeULRTNzHY7mnBSG42CpwHmPa"),
+        Buffer.from("secondToken"),
+        Buffer.from("thirdToken"),
+        Buffer.from("fourthToken"),
+        Buffer.from(JSON.stringify(userData)), // Include database data in metadata
+      ])
+      .execute(client);
+
+    let mintRx = await mintTx.getReceipt(client);
+    // Log the serial number
+    console.log(`- Created NFT ${tokenId} with serial: ${mintRx.serials} \n`);
+    console.log("Mint Transaction Receipt:", JSON.stringify(mintRx, null, 4));
+    console.log("-----------------------------------");
+  } catch (error) {
+    console.error("Error in mintNFTWithDatabaseData:", error);
+  }
 }
 
 async function main() {
   const tokenId = await createNFT();
   await queryTokenInfo(tokenId);
   await queryAccountBalance(myAccountId);
-  await mintNFT(tokenId);
+  await mintNFTWithDatabaseData(tokenId);
   await queryAccountBalance(myAccountId);
 }
+
 main();

@@ -61,7 +61,7 @@ $userC = new userC();
         <header class="header">
             <div class="logo-container">
                 <a href="../" class="logo">
-                    <img src="assets/images/R.jpg" height="35" alt="AFRIKARE Admin" />
+                    <img src="assets/images/lo.png" height="35" alt="AFRIKARE Admin" />
                 </a>
                 <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
                     <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -136,6 +136,12 @@ $userC = new userC();
                                     <a href="index.php">
                                         <i class="fa fa-home" aria-hidden="true"></i>
                                         <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="profile.php">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>Mon profil</span>
                                     </a>
                                 </li>
                                 <li>
@@ -223,82 +229,84 @@ $userC = new userC();
                                     <div class="tab-content">
                                         <div id="w4-account" class="tab-pane active">
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="w4-username">Clé d'authentification</label>
+                                                <label class="col-sm-3 control-label" for="auth">Clé d'authentification</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="auth" id="auth" value="255">
+                                                    <input type="text" class="form-control" name="auth" id="auth">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="plast_name">Prénom du patient</label>
+                                                <label class="col-sm-3 control-label" for="name">Prénom du patient</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="plast_name" id="plast_name">
+                                                    <input type="text" class="form-control" name="name" id="name">
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="w4-profile" class="tab-pane">
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="w4-first-name">
+                                                <label class="col-sm-3 control-label" for="symptome">
                                                     Symptômes actuels</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="first-name" id="w4-first-name">
+                                                    <input type="text" class="form-control" name="symptome" id="symptome">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="w4-last-name">Durée
+                                                <label class="col-sm-3 control-label" for="dure">Durée
                                                 </label>
                                                 <div class="col-sm-9">
-                                                    <input type="number" class="form-control" name="last-name" id="w4-last-name" placeholder="en jour">
+                                                    <input type="number" class="form-control" name="dure" id="dure" placeholder="en jour">
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="w4-billing" class="tab-pane">
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="w4-cc">Pression artérielle</label>
+                                                <label class="col-sm-3 control-label" for="pression">Pression artérielle</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="cc-number" id="w4-cc">
+                                                    <input type="text" class="form-control" name="pression" id="pression">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="w4-cc">Fréquence Cardiaque</label>
+                                                <label class="col-sm-3 control-label" for="frequence">Fréquence Cardiaque</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="cc-number" id="w4-cc">
+                                                    <input type="text" class="form-control" name="frequence" id="frequence">
                                                 </div>
                                             </div>
 
                                         </div>
                                         <div id="w4-confirm" class="tab-pane">
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="w4-email">Diagnostic </label>
+                                                <label class="col-sm-3 control-label" for="diagnostic">Diagnostic </label>
                                                 <div class="col-sm-9">
-                                                    <textarea name="" id="" cols="30" class="form-control" rows="10"></textarea>
+                                                    <textarea name="diagnostic" id="diagnostic" cols="30" class="form-control" rows="10"></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="w4-email">Plan de traitement </label>
+                                                <label class="col-sm-3 control-label" for="traitement">Plan de traitement </label>
                                                 <div class="col-sm-9">
-                                                    <textarea name="" id="" cols="30" class="form-control" rows="10"></textarea>
+                                                    <textarea name="traitement" id="traitement" cols="30" class="form-control" rows="10"></textarea>
                                                 </div>
                                             </div>
 
                                         </div>
+                                        <div class="panel-footer">
+                                            <ul class="pager">
+                                                <li class="previous disabled">
+                                                    <a><i class="fa fa-angle-left"></i> Previous</a>
+                                                </li>
+                                                <li class="finish hidden pull-right">
+                                                    <button type="button" onclick="saveFormData()"> <a>Envoyer</a></button>
+
+                                                </li>
+                                                <li class="next">
+                                                    <a>Next <i class="fa fa-angle-right"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
-                            <div class="panel-footer">
-                                <ul class="pager">
-                                    <li class="previous disabled">
-                                        <a><i class="fa fa-angle-left"></i> Previous</a>
-                                    </li>
-                                    <li class="finish hidden pull-right">
-                                        <a>Envoyer</a>
-                                    </li>
-                                    <li class="next">
-                                        <a>Next <i class="fa fa-angle-right"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </section>
                     </div>
                 </div>
@@ -309,7 +317,45 @@ $userC = new userC();
 
 
     </section>
-    <script src="./hedera_services/Hedera_token_service/nft_creation.js"></script>
+    <?php
+    $schedules = $userC->afficher();
+    $sched_result = [];
+    foreach ($schedules as $row) {
+
+        $sched_result[$row['id']] = $row;
+    }
+    ?>
+
+    <script>
+        function saveFormData() {
+
+            var formData = {
+                auth: getElementValueById('auth'),
+                plast_name: getElementValueById('name'),
+                symptoms: getElementValueById('symptome'),
+                duration: getElementValueById('dure'),
+                bloodPressure: getElementValueById('pression'),
+                heartRate: getElementValueById('frequence'),
+                diagnostic: getElementValueById('diagnostic'),
+                treatmentPlan: getElementValueById('traitement')
+            };
+
+            // Log the form data to the console
+            console.log(formData);
+
+            // Convert the JavaScript object to a JSON string
+            var jsonData = JSON.stringify(formData, null, 2);
+
+
+            console.log(jsonData);
+
+        }
+
+        function getElementValueById(id) {
+            var element = document.getElementById(id);
+            return element ? element.value : null;
+        }
+    </script>
     <!-- Vendor -->
     <script src="assets/vendor/jquery/jquery.js"></script>
     <script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
